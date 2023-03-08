@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Check if family_trees tables is already created
-        if (Schema::hasTable('family_trees')) {
+        // Check if families tables is already created
+        if (Schema::hasTable('families')) {
             return;
         }
 
-        // Create family_trees table
-        Schema::create('family_trees', function (Blueprint $table) {
+        // Create families table
+        Schema::create('families', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100);
             $table->enum('gender', ['male', 'female']);
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->foreign('parent_id')->references('id')->on('family_trees')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('families')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
     public function down(): void
     {
         // Drop family_trees table
-        Schema::dropIfExists('family_trees');
+        Schema::dropIfExists('families');
     }
 };

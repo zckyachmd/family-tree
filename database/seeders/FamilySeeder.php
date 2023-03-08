@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Models\FamilyTree;
+use App\Models\Family;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class FamilyTreeSeeder extends Seeder
+class FamilySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run(FamilyTree $familyTree): void
+    public function run(Family $family): void
     {
         // Data to be seeded
         $data = [
@@ -74,7 +74,7 @@ class FamilyTreeSeeder extends Seeder
 
         // Seed data
         foreach ($data as $key => $value) {
-            $familyTree->firstOrCreate($value);
+            $family->firstOrCreate($value);
         }
     }
 }
